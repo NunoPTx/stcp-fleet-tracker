@@ -2,7 +2,7 @@ import requests
 import json
 from datetime import datetime
 
-URL = "https://broker.fiware.urbanplatform.portodigital.pt/v2/entities?q=vehicleType==bus&limit=1000"
+URL = "https://stcp-proxy.npeixoto2007.workers.dev/"
 
 def run_tracker():
     roster = {}
@@ -19,9 +19,8 @@ def run_tracker():
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         for bus in buses:
-            raw_id = bus.get('id', 'unknown')
-            clean_id = raw_id.split(':')[-1]
-            roster[clean_id] = now
+            bus_id = str(bus.get('id', 'unknown'))
+            roster[bus_id] = now
             
         sorted_keys = sorted(roster.keys(), key=lambda x: int(x) if x.isdigit() else x)
         final_roster = {k: roster[k] for k in sorted_keys}
