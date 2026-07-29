@@ -2,7 +2,8 @@ import requests
 import json
 from datetime import datetime
 
-URL = "https://stcp-proxy.npeixoto2007.workers.dev/"
+# URL = "https://stcp-proxy.npeixoto2007.workers.dev/"
+URL = "https://stcp-proxy.onrender.com/"
 
 def run_tracker():
     roster = {}
