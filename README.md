@@ -9,7 +9,6 @@ Registers the last time each STCP bus was seen by fleet number
 - `tracker.py` — main app
 - `workflow/main.yml` — workflow
 - `roster.json` — roster
-- `stcp.xlsx` — roster in excel with extra information
   
 ## What it shows
 
