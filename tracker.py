@@ -2,7 +2,6 @@ import requests
 import json
 from datetime import datetime
 
-# URL = "https://stcp-proxy.npeixoto2007.workers.dev/"
 URL = "https://stcp-proxy.onrender.com/"
 
 def run_tracker():
@@ -21,16 +20,18 @@ def run_tracker():
 
         for bus in buses:
             bus_id = str(bus.get('id', 'unknown'))
-            roster[bus_id] = now
-            
+            roster[bus_id] = {
+                "last_seen": now,
+                "lat": bus.get("lat"),
+                "lng": bus.get("lng"),
+            }
+
         sorted_keys = sorted(roster.keys(), key=lambda x: int(x) if x.isdigit() else x)
         final_roster = {k: roster[k] for k in sorted_keys}
-
         with open("roster.json", "w") as f:
             json.dump(final_roster, f, indent=4)
-            
-        print(f"Updated {len(buses)} buses successfully.")
 
+        print(f"Updated {len(buses)} buses successfully.")
     except Exception as e:
         print(f"Error: {e}")
 
