@@ -14,3 +14,4 @@ Registers the last time each STCP bus was seen by fleet number
 
 - Fleet number
 - Last time seen in service
+- Last GPS position
